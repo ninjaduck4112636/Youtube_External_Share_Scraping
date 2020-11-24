@@ -19,6 +19,8 @@ try:
         else:
             istring += '/following::a/following::a'
             ihref = driver.find_element_by_xpath(istring).get_attribute("href")
+            if(ihref == 'https://www.youtube.com/'):
+                break
         time.sleep(5)
         print(ihref)
         counter += 1
