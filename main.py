@@ -12,18 +12,20 @@ try:
     counter = 1;
     istring = '//a[@id="video-title"]'
     x_path_details = driver.find_element_by_xpath(istring)
-    
-    while True:
-        if(counter==1):
-            ihref = x_path_details.get_attribute("href")
-        else:
-            istring += '/following::a/following::a'
-            ihref = driver.find_element_by_xpath(istring).get_attribute("href")
-            if(ihref == 'https://www.youtube.com/'):
-                break
-        time.sleep(5)
-        print(ihref)
-        counter += 1
+    with open('YouTube_Links.txt','w+') as file:
+        while True:
+            if(counter==1):
+                ihref = x_path_details.get_attribute("href")
+                file.write(ihref+"\n")
+            else:
+                istring += '/following::a/following::a'
+                ihref = driver.find_element_by_xpath(istring).get_attribute("href")
+                if(ihref == 'https://www.youtube.com/'):
+                    break
+                file.write(ihref+"\n")
+            time.sleep(5)
+            print(ihref)
+            counter += 1
         
 except Exception as e:
     print(e)
