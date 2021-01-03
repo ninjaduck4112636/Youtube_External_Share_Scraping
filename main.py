@@ -23,7 +23,7 @@ try:
                 if(ihref == 'https://www.youtube.com/'):
                     break
                 file.write(ihref+"\n")
-            time.sleep(5)
+            # time.sleep(5)
             print(ihref)
             counter += 1
         
